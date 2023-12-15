@@ -1,0 +1,63 @@
+--Get all games
+CREATE VIEW StoreView as
+SELECT G.id_game,G.title,G.genre,
+       PS.name as publisher_name,PS.website,
+       Pf.name as platform_name,Pf.manufacturer
+FROM games as G
+JOIN publisher as PS on PS.id_publisher = G.id_publisher
+JOIN games_supports_platform GSP on G.id_game = GSP.id_game
+JOIN platform as Pf on Pf.id_platform = GSP.id_platform;
+
+SELECT * FROM StoreView;
+
+--Library for a user(Orders)
+CREATE VIEW UserLibraryView as
+SELECT G.title, G.genre, G.price, G.developer, G.stock, G.release_date,
+       P.discount_percentage,P.start_date,P.end_date,
+       Pay.amount,Pay.payment_method,Pay.date
+FROM games as G
+JOIN orders_contains_games as OCG on G.id_game=OCG.id_game
+JOIN orders as O on O.id_order=OCG.id_order
+JOIN payment as Pay on O.id_payment = Pay.id_payment
+JOIN costumer as C on O.id_costumer=C.id_costumer
+JOIN orders_are_related_to_promotions as ORP on O.id_order = ORP.id_order
+JOIN promotions P on ORP.id_promotion = P.id_promotion;
+
+SELECT * from UserLibraryView;
+
+--Game Reviews foreach game
+CREATE  VIEW GameReviewsView as
+SELECT R.id_review,R.rating,R.comment,
+       C.username,G.id_game,
+       G.title as game_title,
+       G.genre as game_genre
+FROM review as R
+JOIN costumer as C on R.id_costumer=C.id_costumer
+JOIN games as G on R.id_game=G.id_game
+JOIN publisher as PS on PS.id_publisher = G.id_publisher
+JOIN games_supports_platform GSP on G.id_game = GSP.id_game
+JOIN platform P on P.id_platform = GSP.id_platform;
+
+SELECT * from  GameReviewsView;
+
+BEGIN TRANSACTION;
+
+--Form for adding Games
+INSERT INTO Games (title, genre, price, developer, stock, release_date, id_publisher)
+VALUES ('Spider man', 'Sci-fi', 69.99, 'YOUStudio', 10, '2023-06-30', 1);
+
+--Form placing a order for a game.
+INSERT INTO Orders (status, order_date, total_amount, id_costumer, id_payment)
+VALUES ('Pending', '2023-07-01', 69.99,3, 1);
+INSERT INTO Orders_contains_games (id_order, id_game)
+VALUES (4, 4);
+
+--Form Adding Reviews
+INSERT INTO Review (rating, comment, id_costumer, id_game)
+VALUES (4, 'Amazing game',3, 4);
+
+COMMIT;
+
+SELECT * FROM games;
+SELECT * FROM orders;
+SELECT * FROM review;
