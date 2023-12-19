@@ -1,0 +1,38 @@
+-- Izveestaj za nedelni prodazbi so detali za korisnicite
+
+SELECT extract(WEEK FROM O.order_date ) as week_number,
+       C.username,
+       count(O.id_order) as total_orders,
+       sum(O.total_amount) as total_sales
+FROM orders as O
+JOIN Costumer as C on O.id_costumer=C.id_costumer
+GROUP BY week_number, C.username
+ORDER BY week_number, total_sales DESC;
+
+--Izvestaj za mesecni prihodi i broj na reviews po zanr i izdavac
+SELECT extract(MONTH FROM O.order_date) as month_number,
+       G.genre,
+       P.name as publisher,
+       count(R.id_review) as total_reviews,
+       sum(O.total_amount) as total_revenue
+FROM orders as O
+    JOIN orders_contains_games as OG on O.id_order = OG.id_order
+    JOIN Games as G on OG.id_game = G.id_game
+    JOIN publisher as P on G.id_publisher=P.id_publisher
+    LEFT JOIN review as R on G.id_game=R.id_game
+GROUP BY month_number,G.genre, P.name
+ORDER BY month_number, total_revenue DESC ,total_reviews DESC;
+
+-- Извештај за годишни продажби, просек на рејтинг и број на платформи за секоја игра
+SELECT extract(YEAR FROM O.order_date) as year_number,
+       G.title,
+       count(DISTINCT GP.id_platform) as total_platfroms,
+       avg(R.rating) as average_rating,
+       sum(O.total_amount) as total_sales
+FROM orders as O
+    JOIN orders_contains_games as OG on O.id_order = OG.id_order
+    JOIN games as G on OG.id_game = G.id_game
+    JOIN review as R on G.id_game = R.id_game
+    LEFT JOIN games_supports_platform as GP on G.id_game = GP.id_game
+GROUP BY year_number,G.title
+ORDER BY year_number, total_sales DESC , average_rating DESC;

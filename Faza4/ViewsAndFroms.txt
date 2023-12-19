@@ -40,21 +40,56 @@ JOIN platform P on P.id_platform = GSP.id_platform;
 
 SELECT * from  GameReviewsView;
 
+--BEGIN
+--COMMIT
+--ROLLBACK
 BEGIN TRANSACTION;
-
 --Form for adding Games
-INSERT INTO Games (title, genre, price, developer, stock, release_date, id_publisher)
-VALUES ('Spider man', 'Sci-fi', 69.99, 'YOUStudio', 10, '2023-06-30', 1);
+CREATE FUNCTION insertGame(_title varchar, _genre varchar, _price numeric, _developer varchar, _stock integer, _release_date date,_id_publisher integer)
+RETURNS void AS
+$BODY$
+        BEGIN
+            INSERT INTO games(title, genre, price, developer, stock, release_date, id_publisher)
+            VALUES(_title, _genre, _price, _developer, _stock, _release_date,_id_publisher);
+        END;
+$BODY$
+LANGUAGE 'plpgsql' VOLATILE
+COST 100;
 
 --Form placing a order for a game.
-INSERT INTO Orders (status, order_date, total_amount, id_costumer, id_payment)
-VALUES ('Pending', '2023-07-01', 69.99,3, 1);
-INSERT INTO Orders_contains_games (id_order, id_game)
-VALUES (4, 4);
+CREATE FUNCTION insertOrder(_status varchar, _order_date date, _total_amount numeric, _id_costumer integer, _id_payment integer)
+RETURNS void AS
+$BODY$
+        BEGIN
+            INSERT INTO orders(status, order_date, total_amount, id_costumer, id_payment)
+            VALUES(_status, _order_date, _total_amount, _id_costumer, _id_payment);
+        END;
+$BODY$
+LANGUAGE 'plpgsql' VOLATILE
+COST 100;
+
+CREATE FUNCTION insertOrders_Contains_Games(_id_order integer, _id_game integer)
+RETURNS void AS
+$BODY$
+        BEGIN
+            INSERT INTO orders_contains_games(id_order, id_game)
+            VALUES(_id_order,_id_game);
+        END;
+$BODY$
+LANGUAGE 'plpgsql' VOLATILE
+COST 100;
 
 --Form Adding Reviews
-INSERT INTO Review (rating, comment, id_costumer, id_game)
-VALUES (4, 'Amazing game',3, 4);
+CREATE FUNCTION insertReview(_rating integer, _comment integer,_id_costumer integer,_id_game integer)
+RETURNS void AS
+$BODY$
+        BEGIN
+            INSERT INTO review(rating, comment, id_costumer, id_game)
+            VALUES(_rating,_comment,_id_costumer,_id_game);
+        END;
+$BODY$
+LANGUAGE 'plpgsql' VOLATILE
+COST 100;
 
 COMMIT;
 
