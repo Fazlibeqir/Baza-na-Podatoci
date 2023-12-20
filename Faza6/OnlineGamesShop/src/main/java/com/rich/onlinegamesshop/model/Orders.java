@@ -1,11 +1,14 @@
 package com.rich.onlinegamesshop.model;
 
+import com.rich.onlinegamesshop.model.relations.OrdersAreRelatedToPromotions;
+import com.rich.onlinegamesshop.model.relations.OrdersContainsGames;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Entity
@@ -13,7 +16,7 @@ import java.time.LocalDate;
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderId;
+    private Integer id_order;
 
     private String status;
 
@@ -22,12 +25,18 @@ public class Orders {
     private BigDecimal totalAmount;
 
     @ManyToOne
-    @JoinColumn(name = "consumerId",nullable = false)
+    @JoinColumn(name = "id_costumer",nullable = false)
     private Costumer costumer;
 
     @ManyToOne
-    @JoinColumn(name="paymentId",nullable = false)
+    @JoinColumn(name="id_payment",nullable = false)
     private Payment payment;
+
+    @OneToMany(mappedBy = "id_order")
+    private List<OrdersAreRelatedToPromotions> promotions;
+
+    @OneToMany(mappedBy = "id_order")
+    private List<OrdersContainsGames> games;
 
     public Orders(String status, LocalDate orderDate,
                   BigDecimal totalAmount, Costumer costumer,

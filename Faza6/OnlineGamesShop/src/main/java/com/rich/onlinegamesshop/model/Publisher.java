@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long publisherId;
+    private Integer id_publisher;
 
     @Column(nullable = false)
     String name;

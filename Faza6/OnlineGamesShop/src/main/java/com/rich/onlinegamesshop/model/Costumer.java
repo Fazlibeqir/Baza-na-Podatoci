@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class Costumer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long costumerId;
+    private Integer id_costumer;
 
     @Column(nullable = false)
     String username;

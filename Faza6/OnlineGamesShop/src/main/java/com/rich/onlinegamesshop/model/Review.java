@@ -10,17 +10,17 @@ import lombok.NoArgsConstructor;
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reviewId;
+    private Integer id_review;
 
     private Integer rating;
 
     private String Comment;
     @ManyToOne
-    @JoinColumn(name = "consumerId",nullable = false)
+    @JoinColumn(name = "id_costumer",nullable = false)
     private Costumer costumer;
 
     @ManyToOne
-    @JoinColumn(name = "gameId",nullable = false)
+    @JoinColumn(name = "id_game",nullable = false)
     private Games games;
 
     public Review(Integer rating, String comment,

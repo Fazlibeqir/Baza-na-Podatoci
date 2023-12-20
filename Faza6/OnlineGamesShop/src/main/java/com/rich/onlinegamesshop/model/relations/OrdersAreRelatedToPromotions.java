@@ -2,6 +2,7 @@ package com.rich.onlinegamesshop.model.relations;
 
 import com.rich.onlinegamesshop.model.Orders;
 import com.rich.onlinegamesshop.model.Promotions;
+import com.rich.onlinegamesshop.model.relations.combineIds.OrdersAreRelatedToPromotionsId;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,19 +10,20 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
+@IdClass(OrdersAreRelatedToPromotionsId.class)
 public class OrdersAreRelatedToPromotions {
     @Id
     @ManyToOne
-    @JoinColumn(name = "orderId",nullable = false)
-    private Orders order;
+    @JoinColumn(name = "id_order",nullable = false)
+    private Orders id_order;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "promotionId",nullable = false)
-    private Promotions promotion;
+    @JoinColumn(name = "id_promotion",nullable = false)
+    private Promotions id_promotion;
 
-    public OrdersAreRelatedToPromotions(Orders order, Promotions promotion) {
-        this.order = order;
-        this.promotion = promotion;
+    public OrdersAreRelatedToPromotions(Orders id_order, Promotions id_promotion) {
+        this.id_order = id_order;
+        this.id_promotion = id_promotion;
     }
 }

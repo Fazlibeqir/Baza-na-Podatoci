@@ -1,7 +1,8 @@
 package com.rich.onlinegamesshop.model;
 
+import com.rich.onlinegamesshop.model.relations.GamesSupportsPlatform;
+import com.rich.onlinegamesshop.model.relations.OrdersContainsGames;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,14 +16,14 @@ import java.util.List;
 public class Games {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long gameId;
+    private Integer id_game;
 
     private String title;
 
     @Column(nullable = false)
     private String genre;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 
     private String Developer;
@@ -33,8 +34,14 @@ public class Games {
     LocalDate releaseDate;
 
     @ManyToOne
-    @JoinColumn(name="publisherId",nullable = false)
+    @JoinColumn(name="id_publisher",nullable = false)
     Publisher publisher;
+
+    @OneToMany(mappedBy = "id_game")
+    private List<GamesSupportsPlatform> supportedPlatforms;
+
+    @OneToMany(mappedBy = "id_game")
+    private List<OrdersContainsGames> orders;
 
     public Games(String title, String genre, BigDecimal price, String developer, Integer stock, LocalDate releaseDate, Publisher publisher) {
         this.title = title;
