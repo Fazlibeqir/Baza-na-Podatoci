@@ -1,19 +1,22 @@
 package com.rich.onlinegamesshop.model.views;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Immutable;
+import org.hibernate.annotations.View;
 
 @Data
 @Entity
 @Immutable
+@Table(name = "storeview")
+@NoArgsConstructor
+@AllArgsConstructor
 public class StoreView {
 
-    @Transient
     @Id
-    private Long id;
     private Integer id_game;
     private String title;
     private String genre;
