@@ -5,13 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
 import {StoreViewService} from "./services/StoreView.service";
-import {StoreViewComponent} from "./views/StoreView.component";
+import {StoreViewComponent} from "./views/storeView/StoreView.component";
+import { UserLibraryViewComponent } from './views/userLibraryView/UserLibraryView.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    StoreViewComponent
+    StoreViewComponent,
+    UserLibraryViewComponent
   ],
   imports: [
     BrowserModule,

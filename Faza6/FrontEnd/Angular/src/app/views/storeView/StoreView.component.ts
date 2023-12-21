@@ -1,9 +1,9 @@
 import {Component,OnInit} from "@angular/core";
-import {StoreView} from "../model/StoreView";
-import {StoreViewService} from "../services/StoreView.service";
+import {StoreView} from "../../model/StoreView";
+import {StoreViewService} from "../../services/StoreView.service";
 
 @Component({
-    selector: 'app-StoreView',
+    selector: 'app-pre',
     templateUrl: './StoreView.component.html',
     styleUrls: ['./StoreView.component.css']
 })
