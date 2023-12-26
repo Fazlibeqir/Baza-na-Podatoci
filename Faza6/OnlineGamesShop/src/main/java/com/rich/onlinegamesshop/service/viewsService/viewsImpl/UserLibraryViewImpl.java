@@ -1,7 +1,7 @@
 package com.rich.onlinegamesshop.service.viewsService.viewsImpl;
 
 import com.rich.onlinegamesshop.model.views.UserLibraryView;
-import com.rich.onlinegamesshop.repository.viewsRepo.Impl.UserLibraryViewRepository;
+import com.rich.onlinegamesshop.repository.viewsRepo.UserLibraryViewRepository;
 import com.rich.onlinegamesshop.service.viewsService.UserLibraryViewService;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +17,6 @@ public class UserLibraryViewImpl implements UserLibraryViewService {
 
     @Override
     public List<UserLibraryView> getUserLibraryView() {
-        return this.userLibraryViewRepository.findAll();
+        return this.userLibraryViewRepository.findAllLibraryView();
     }
 }

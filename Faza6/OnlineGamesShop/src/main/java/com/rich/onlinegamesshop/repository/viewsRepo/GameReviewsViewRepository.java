@@ -1,4 +1,4 @@
-package com.rich.onlinegamesshop.repository.viewsRepo.Impl;
+package com.rich.onlinegamesshop.repository.viewsRepo;
 
 import com.rich.onlinegamesshop.model.views.GameReviewsView;
 import org.springframework.data.jpa.repository.JpaRepository;

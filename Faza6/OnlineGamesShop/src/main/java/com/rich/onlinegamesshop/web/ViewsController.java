@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class GameController {
+public class ViewsController {
 
     private final StoreViewService storeViewService;
     private final UserLibraryViewService userLibraryViewService;
     private final GameReviewsViewService gameReviewsViewService;
 
-    public GameController(StoreViewService storeViewService,
-                          UserLibraryViewService userLibraryViewService,
-                          GameReviewsViewService gameReviewsViewService) {
+    public ViewsController(StoreViewService storeViewService,
+                           UserLibraryViewService userLibraryViewService,
+                           GameReviewsViewService gameReviewsViewService) {
         this.storeViewService = storeViewService;
         this.userLibraryViewService = userLibraryViewService;
         this.gameReviewsViewService = gameReviewsViewService;
@@ -42,7 +42,7 @@ public class GameController {
 //        model.addAttribute("games", ulvCostumeService.getUserLibraryView());
         return userLibraryViewService.getUserLibraryView();
     }
-    @GetMapping("/reviews")
+    @GetMapping("/Reviews")
     public List<GameReviewsView> getGameReviews(Model model) {
 //        model.addAttribute("games", ulvCostumeService.getUserLibraryView());
         return gameReviewsViewService.getAllReviewsWithGames();

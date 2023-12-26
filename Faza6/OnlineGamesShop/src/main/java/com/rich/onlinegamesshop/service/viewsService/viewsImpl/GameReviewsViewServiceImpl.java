@@ -1,7 +1,7 @@
 package com.rich.onlinegamesshop.service.viewsService.viewsImpl;
 
 import com.rich.onlinegamesshop.model.views.GameReviewsView;
-import com.rich.onlinegamesshop.repository.viewsRepo.Impl.GameReviewsViewRepository;
+import com.rich.onlinegamesshop.repository.viewsRepo.GameReviewsViewRepository;
 import com.rich.onlinegamesshop.service.viewsService.GameReviewsViewService;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.rich.onlinegamesshop.repository.viewsRepo.Impl;
+package com.rich.onlinegamesshop.repository.viewsRepo;
 
 import com.rich.onlinegamesshop.model.views.StoreView;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface StoreViewRepository extends JpaRepository<StoreView,Integer> {
     @Query(value = "SELECT * FROM storeview", nativeQuery = true)
-    List<StoreView> findAll();
+    List<StoreView> findAllStoreView();
 }

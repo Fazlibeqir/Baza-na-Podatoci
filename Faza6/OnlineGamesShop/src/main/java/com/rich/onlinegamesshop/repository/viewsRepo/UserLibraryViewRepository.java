@@ -1,4 +1,4 @@
-package com.rich.onlinegamesshop.repository.viewsRepo.Impl;
+package com.rich.onlinegamesshop.repository.viewsRepo;
 
 import com.rich.onlinegamesshop.model.views.UserLibraryView;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,5 +11,5 @@ import java.util.List;
 public interface UserLibraryViewRepository extends JpaRepository<UserLibraryView,String> {
 
     @Query(value = "SELECT * FROM userlibraryview", nativeQuery = true)
-    List<UserLibraryView> findAll();
+    List<UserLibraryView> findAllLibraryView();
 }

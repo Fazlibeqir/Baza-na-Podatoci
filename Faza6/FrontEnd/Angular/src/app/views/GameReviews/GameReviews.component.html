@@ -1,0 +1,24 @@
+<table>
+  <thead>
+  <tr>
+    <th>id_review</th>
+    <th>rating</th>
+    <th>comment</th>
+    <th>username</th>
+    <th>id_game</th>
+    <th>game_title</th>
+    <th>game_genre</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let s of gameReviewsViews">
+    <td>{{s.id_review}}</td>
+    <td>{{s.rating}}</td>
+    <td>{{s.comment}}</td>
+    <td>{{s.username}}</td>
+    <td>{{s.id_game}}</td>
+    <td>{{s.game_title}}</td>
+    <td>{{s.game_genre}}</td>
+  </tr>
+  </tbody>
+</table>
