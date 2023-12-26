@@ -6,7 +6,6 @@ import com.rich.onlinegamesshop.model.views.UserLibraryView;
 import com.rich.onlinegamesshop.service.viewsService.GameReviewsViewService;
 import com.rich.onlinegamesshop.service.viewsService.StoreViewService;
 import com.rich.onlinegamesshop.service.viewsService.UserLibraryViewService;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,25 +25,16 @@ public class ViewsController {
         this.gameReviewsViewService = gameReviewsViewService;
     }
 
-//    @GetMapping
-//    public ResponseEntity<List<Games>> getAllGames() {
-//        List<Games> games = gamesService.getAllGames();
-//        return new ResponseEntity<>(games, HttpStatus.OK);
-//    }
     @GetMapping("/games")
-    public List<StoreView> getAllGames(Model model) {
-        //        model.addAttribute("games", storeViewService.getAllGamesFromStoreView());
-//        return "addGame";
+    public List<StoreView> getAllGames() {
         return storeViewService.getAllGamesFromStoreView();
     }
     @GetMapping("/library")
-    public List<UserLibraryView> getUserLibrary(Model model) {
-//        model.addAttribute("games", ulvCostumeService.getUserLibraryView());
+    public List<UserLibraryView> getUserLibrary() {
         return userLibraryViewService.getUserLibraryView();
     }
     @GetMapping("/Reviews")
-    public List<GameReviewsView> getGameReviews(Model model) {
-//        model.addAttribute("games", ulvCostumeService.getUserLibraryView());
+    public List<GameReviewsView> getGameReviews() {
         return gameReviewsViewService.getAllReviewsWithGames();
     }
 }
