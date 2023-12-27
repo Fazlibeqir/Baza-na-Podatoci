@@ -10,7 +10,7 @@ import { UserLibraryViewComponent } from './views/userLibraryView/UserLibraryVie
 import { GameReviewsComponent } from './views/GameReviews/GameReviews.component';
 import {UserLibraryViewService} from "./services/viewService/UserLibraryView.service";
 import {GameReviewsService} from "./services/viewService/GameReviews.service";
-import { ReportsComponent } from './reports/reports/reports.component';
+import { ReportsComponent } from './views/reports/reports.component';
 
 
 @NgModule({
