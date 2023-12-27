@@ -1,0 +1,39 @@
+
+<form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input type="text" class="form-control" id="title" formControlName="title" />
+  </div>
+
+  <div class="form-group">
+    <label for="genre">Genre:</label>
+    <input type="text" class="form-control" id="genre" formControlName="genre" />
+  </div>
+
+  <div class="form-group">
+    <label for="price">Price:</label>
+    <input type="number" class="form-control" id="price" formControlName="price" />
+  </div>
+
+  <div class="form-group">
+    <label for="developer">Developer:</label>
+    <input type="text" class="form-control" id="developer" formControlName="developer" />
+  </div>
+
+  <div class="form-group">
+    <label for="stock">Stock:</label>
+    <input type="number" class="form-control" id="stock" formControlName="stock" />
+  </div>
+
+  <div class="form-group">
+    <label for="releaseDate">Release Date:</label>
+    <input type="date" class="form-control" id="releaseDate" formControlName="releaseDate" />
+  </div>
+
+  <div class="form-group">
+    <label for="idPublisher">Id Publisher:</label>
+    <input type="number" class="form-control" id="idPublisher" formControlName="idPublisher" />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
