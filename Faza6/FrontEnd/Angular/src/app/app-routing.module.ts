@@ -3,7 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { StoreViewComponent } from "./views/storeView/StoreView.component";
 import {UserLibraryViewComponent} from "./views/userLibraryView/UserLibraryView.component";
 import {GameReviewsComponent} from "./views/GameReviews/GameReviews.component";
+import {ReportsComponent} from "./reports/reports/reports.component";
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'games',
+    pathMatch: 'full'
+  },
   {
     path: 'games',
     component: StoreViewComponent
@@ -15,6 +21,11 @@ const routes: Routes = [
   {
     path:'Reviews',
     component: GameReviewsComponent
+  }
+  ,
+  {
+    path: 'Reports',
+    component: ReportsComponent
   }
 ];
 

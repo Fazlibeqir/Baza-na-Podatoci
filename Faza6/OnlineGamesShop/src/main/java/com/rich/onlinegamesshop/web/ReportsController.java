@@ -5,11 +5,13 @@ import com.rich.onlinegamesshop.model.reports.WeeklySalesReport;
 import com.rich.onlinegamesshop.model.reports.YearlyGameStatisticsReport;
 import com.rich.onlinegamesshop.service.modelService.OrderService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/reports")
 public class ReportsController {
     private final OrderService orderService;
 

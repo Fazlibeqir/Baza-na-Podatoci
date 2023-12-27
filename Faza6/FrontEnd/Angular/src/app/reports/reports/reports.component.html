@@ -1,0 +1,87 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="header">
+      <h2>Weekly Statistics Sales Report</h2>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Username</th>
+          <th>Week Number</th>
+          <th>Total Orders</th>
+          <th>Total Sales</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let s of weeklyReport">
+          <td>{{s.username}}</td>
+          <td>{{s.weekNumber}}</td>
+          <td>{{s.totalOrders}}</td>
+          <td>{{s.totalSales}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="card">
+    <div class="header">
+      <h2>Monthly Game Statistics Report</h2>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Genre</th>
+          <th>Publisher</th>
+          <th>Month Number</th>
+          <th>Total Reviews</th>
+          <th>Total Revenue</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let s of monthlyReport">
+          <td>{{s.genre}}</td>
+          <td>{{s.publisher}}</td>
+          <td>{{s.monthNumber}}</td>
+          <td>{{s.totalReviews}}</td>
+          <td>{{s.totalRevenue}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="card">
+    <div class="header">
+      <h2>Yearly Game Statistics Report</h2>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Title</th>
+          <th>Year Number</th>
+          <th>Total Platforms</th>
+          <th>Average Rating</th>
+          <th>Total Sales</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let s of yearlyReport">
+          <td>{{s.title}}</td>
+          <td>{{s.yearNumber}}</td>
+          <td>{{s.totalPlatforms}}</td>
+          <td>{{s.averageRating}}</td>
+          <td>{{s.totalSales}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

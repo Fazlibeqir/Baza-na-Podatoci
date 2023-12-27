@@ -1,6 +1,6 @@
 import {Component,OnInit} from "@angular/core";
-import {StoreView} from "../../model/StoreView";
-import {StoreViewService} from "../../services/StoreView.service";
+import {StoreView} from "../../model/Views/StoreView";
+import {StoreViewService} from "../../services/viewService/StoreView.service";
 
 @Component({
     selector: 'app-pre',

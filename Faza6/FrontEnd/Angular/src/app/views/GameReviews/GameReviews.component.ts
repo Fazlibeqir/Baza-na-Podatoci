@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {GameReviewsView} from "../../model/GameReviewsView";
-import {GameReviewsService} from "../../services/GameReviews.service";
+import {GameReviewsView} from "../../model/Views/GameReviewsView";
+import {GameReviewsService} from "../../services/viewService/GameReviews.service";
 
 @Component({
   selector: 'app-game-reviews',

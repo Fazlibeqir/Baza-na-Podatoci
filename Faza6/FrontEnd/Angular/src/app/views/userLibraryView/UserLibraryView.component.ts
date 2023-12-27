@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {UserLibraryView} from '../../model/UserLibraryView';
-import {UserLibraryViewService} from '../../services/UserLibraryView.service';
+import {UserLibraryView} from '../../model/Views/UserLibraryView';
+import {UserLibraryViewService} from '../../services/viewService/UserLibraryView.service';
 
 @Component({
   selector: 'app-pro',
