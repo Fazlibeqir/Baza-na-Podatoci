@@ -11,10 +11,11 @@ import { GameReviewsComponent } from './views/GameReviews/GameReviews.component'
 import {UserLibraryViewService} from "./services/viewService/UserLibraryView.service";
 import {GameReviewsService} from "./services/viewService/GameReviews.service";
 import { ReportsComponent } from './views/reports/reports.component';
-import { GameFromComponent } from './forms/game-from/game-from.component';
+import {GameFromComponent} from './forms/game-from/game-from.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule
   ],
   providers: [StoreViewService,UserLibraryViewService,GameReviewsService],
   bootstrap: [AppComponent]

@@ -1,4 +1,6 @@
-
+<div *ngIf="showSnackbar" [class]="snackbarClass">
+  {{ snackbarMessage }}
+</div>
 <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="title">Title:</label>

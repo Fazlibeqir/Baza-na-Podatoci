@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {GameService} from "../../services/game.service";
 import {Subscription} from "rxjs";
-import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-game-from',
@@ -13,9 +12,11 @@ export class GameFromComponent implements OnInit,OnDestroy{
   // @ts-ignore
   gameForm: FormGroup;
   private subscriptions: Subscription=new Subscription();
+  showSnackbar: boolean=false;
+  snackbarMessage: string | undefined;
+  snackbarClass: string ='custom-snackbar';
   constructor(private formBuilder: FormBuilder,
-              private gameService: GameService,
-              private snackBar:MatSnackBar){}
+              private gameService: GameService){}
 
   ngOnInit(): void {
     this.gameForm=this.formBuilder.group({
@@ -42,25 +43,24 @@ export class GameFromComponent implements OnInit,OnDestroy{
      ).subscribe(
        response => {
        console.log(response);
-       this.showSnackBar(response);
+       this.showMessage(response,'alert-success');
      },
        error => {
           console.error(error);
-          this.showSnackBar(error);
+          this.showMessage(error,'alert-danger');
           // Additional logic...
        });
     this.subscriptions.add(insertGameSubscription);
     }
   }
-  private showSnackBar(message: string): void {
-    this.snackBar.open(message, 'Close', {
-      duration: 3000,
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-      panelClass: ['centered-snack-bar']
-    });
+  private showMessage(message: string,cssClass:string): void {
+    this.snackbarMessage=message;
+    this.snackbarClass=`custom-snackbar ${cssClass}`;
+    this.showSnackbar=true;
+    setTimeout(()=>{
+      this.showSnackbar=false;
+    },3000);
   }
-
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
