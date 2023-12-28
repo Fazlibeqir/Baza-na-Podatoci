@@ -1,5 +1,9 @@
 package com.rich.onlinegamesshop.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.rich.onlinegamesshop.model.relations.GamesSupportsPlatform;
 import com.rich.onlinegamesshop.model.relations.OrdersContainsGames;
 import jakarta.persistence.*;
@@ -38,9 +42,11 @@ public class Games {
     Publisher publisher;
 
     @OneToMany(mappedBy = "id_game")
+    @JsonIgnore
     private List<GamesSupportsPlatform> supportedPlatforms;
 
     @OneToMany(mappedBy = "id_game")
+    @JsonIgnoreProperties("ig_game")
     private List<OrdersContainsGames> orders;
 
     public Games(String title, String genre, BigDecimal price, String developer, Integer stock, LocalDate releaseDate, Publisher publisher) {

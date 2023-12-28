@@ -1,5 +1,6 @@
 package com.rich.onlinegamesshop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rich.onlinegamesshop.model.relations.GamesSupportsPlatform;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,7 @@ public class Platform {
     private LocalDate releaseDate;
 
     @OneToMany(mappedBy = "id_platform")
+    @JsonIgnore
     private List<GamesSupportsPlatform> supportedGames;
 
     public Platform(String name, String manufacturer, LocalDate releaseDate) {

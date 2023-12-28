@@ -1,5 +1,8 @@
 package com.rich.onlinegamesshop.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.rich.onlinegamesshop.model.relations.OrdersAreRelatedToPromotions;
 import com.rich.onlinegamesshop.model.relations.OrdersContainsGames;
 import jakarta.persistence.*;
@@ -13,6 +16,7 @@ import java.util.List;
 @Data
 @Entity
 @NoArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_order")
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,9 +37,11 @@ public class Orders {
     private Payment payment;
 
     @OneToMany(mappedBy = "id_order")
+    @JsonIgnoreProperties("id_order")
     private List<OrdersAreRelatedToPromotions> promotions;
 
     @OneToMany(mappedBy = "id_order")
+    @JsonIgnoreProperties("id_order")
     private List<OrdersContainsGames> games;
 
     public Orders(String status, LocalDate orderDate,

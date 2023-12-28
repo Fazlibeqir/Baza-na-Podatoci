@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpHeaders,HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {StoreView} from '../../model/Views/StoreView';
 import {environment} from 'src/environments/environment';
 
 @Injectable({

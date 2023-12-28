@@ -12,7 +12,7 @@ import {UserLibraryViewService} from "./services/viewService/UserLibraryView.ser
 import {GameReviewsService} from "./services/viewService/GameReviews.service";
 import { ReportsComponent } from './views/reports/reports.component';
 import {GameFromComponent} from './forms/game-from/game-from.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatToolbarModule} from "@angular/material/toolbar";
@@ -34,7 +34,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    FormsModule
   ],
   providers: [StoreViewService,UserLibraryViewService,GameReviewsService],
   bootstrap: [AppComponent]

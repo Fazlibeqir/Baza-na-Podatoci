@@ -5,37 +5,74 @@
   <div class="form-group">
     <label for="title">Title:</label>
     <input type="text" class="form-control" id="title" formControlName="title" />
+    <div *ngIf="gameForm.get('title')?.hasError('required') && gameForm.get('title')?.touched" class="text-danger">
+      Title is required.
+    </div>
   </div>
 
   <div class="form-group">
     <label for="genre">Genre:</label>
     <input type="text" class="form-control" id="genre" formControlName="genre" />
+    <div *ngIf="gameForm.get('genre')?.hasError('required') && gameForm.get('genre')?.touched" class="text-danger">
+      Genre is required.
+    </div>
   </div>
 
   <div class="form-group">
     <label for="price">Price:</label>
     <input type="number" class="form-control" id="price" formControlName="price" />
+    <div *ngIf="gameForm.get('price')?.hasError('required') && gameForm.get('price')?.touched" class="text-danger">
+      Price is required.
+    </div>
   </div>
 
   <div class="form-group">
     <label for="developer">Developer:</label>
     <input type="text" class="form-control" id="developer" formControlName="developer" />
+    <div *ngIf="gameForm.get('developer')?.hasError('required') && gameForm.get('developer')?.touched" class="text-danger">
+      Developer is required.</div>
   </div>
 
   <div class="form-group">
     <label for="stock">Stock:</label>
     <input type="number" class="form-control" id="stock" formControlName="stock" />
+    <div *ngIf="gameForm.get('stock')?.hasError('required') && gameForm.get('stock')?.touched" class="text-danger">
+      Stock is required.</div>
   </div>
 
   <div class="form-group">
     <label for="releaseDate">Release Date:</label>
     <input type="date" class="form-control" id="releaseDate" formControlName="releaseDate" />
+    <div *ngIf="gameForm.get('releaseDate')?.hasError('required') && gameForm.get('releaseDate')?.touched" class="text-danger">
+      Release Date is required.</div>
   </div>
 
   <div class="form-group">
-    <label for="idPublisher">Id Publisher:</label>
-    <input type="number" class="form-control" id="idPublisher" formControlName="idPublisher" />
+    <label for="idPublisher">Select Publisher:</label>
+    <select formControlName="selectedPublisher" name="publisher" id="idPublisher" class="form-control">
+      <option value="" disabled selected>Select a Publisher</option>
+      <option *ngFor="let publisher of publishers" [value]="publisher.id_publisher">{{ publisher.name }}</option>
+    </select>
+    <div *ngIf="gameForm.get('selectedPlatform')?.hasError('required') && gameForm.get('selectedPlatform')?.touched" class="text-danger">
+      Please select a Platform.
+    </div>
+
+  </div>
+  <div class="form-group">
+    <label for="idPlatform">Select Platform:</label>
+   <select formControlName="selectedPlatform" name="platform" id="idPlatform" class="form-control">
+     <option value="" disabled selected>Select a Platform</option>
+     <option *ngFor="let platform of platforms" [value]="platform.id_platform">{{ platform.name }}</option>
+    </select>
+    <div *ngIf="gameForm.get('selectedPlatform')?.hasError('required') && gameForm.get('selectedPlatform')?.touched" class="text-danger">
+      Please select a Platform.
+    </div>
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!gameForm.valid">Submit</button>
 </form>
+
+
+
+

@@ -1,36 +1,21 @@
 <button class="btn btn-success" routerLink="/game-form">Add Game</button>
-<div class="container mt-5">
-  <div class="card">
-    <div class="header">
-      <h2>Store</h2>
-    </div>
-    <div class="card-body">
 
-    <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Id_game</th>
-        <th>Title</th>
-        <th>Genre</th>
-        <th>Publisher Name</th>
-        <th>Website</th>
-        <th>Platform Name</th>
-        <th>Manufacturer</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let s of storeViews">
-        <td>{{s.id_game}}</td>
-        <td>{{s.title}}</td>
-        <td>{{s.genre}}</td>
-        <td>{{s.publisher_name}}</td>
-        <td>{{s.website}}</td>
-        <td>{{s.platform_name}}</td>
-        <td>{{s.manufacturer}}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="card-scroll-container">
+  <div class="card-group" #cardGroup>
+    <div *ngFor="let item of storeViews">
+      <div class="card">
+        <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Banana-Single.jpg/330px-Banana-Single.jpg" alt="Card image cap">
+         <div class="card-body">
+          <h5 class="card-title">{{ item.title }}</h5>
+          <p class="card-genre">{{ item.genre }}</p>
+          <p class="card-publisher_name">{{ item.publisher_name }}</p>
+          <a class="card-website" href="{{ item.website }}">{{ item.website }}</a>
+          <p class="card-platform_name">{{ item.platform_name }}</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">{{ item.manufacturer }}</small>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-

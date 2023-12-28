@@ -1,0 +1,18 @@
+.card{
+    background-color: #5b5454;
+    border-radius:10px;
+    color:#fff;
+    display: inline-block;
+    width: 300px; /* set the width of each card */
+    margin-right: 10px; /* add some margin between cards */
+}
+.card-group {
+
+    width: 50000px; /* set the width to be larger than the container */
+    display: flex; /* use flexbox to align cards horizontally */
+}
+.card-genre, .card-title, .card-publisher_name, .card-website, .card-platform_name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

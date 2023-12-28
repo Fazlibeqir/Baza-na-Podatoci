@@ -1,5 +1,6 @@
 package com.rich.onlinegamesshop.model.relations;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.rich.onlinegamesshop.model.Games;
 import com.rich.onlinegamesshop.model.Orders;
 import com.rich.onlinegamesshop.model.relations.combineIds.OrdersContainsGamesId;
@@ -15,6 +16,7 @@ public class OrdersContainsGames {
     @Id
     @ManyToOne
     @JoinColumn(name = "id_order",nullable = false)
+    @JsonIgnoreProperties("games")
     private Orders id_order;
 
     @Id

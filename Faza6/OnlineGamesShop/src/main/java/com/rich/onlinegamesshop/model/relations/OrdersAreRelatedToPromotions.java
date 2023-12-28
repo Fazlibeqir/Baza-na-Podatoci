@@ -1,5 +1,6 @@
 package com.rich.onlinegamesshop.model.relations;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.rich.onlinegamesshop.model.Orders;
 import com.rich.onlinegamesshop.model.Promotions;
 import com.rich.onlinegamesshop.model.relations.combineIds.OrdersAreRelatedToPromotionsId;
@@ -20,6 +21,7 @@ public class OrdersAreRelatedToPromotions {
     @Id
     @ManyToOne
     @JoinColumn(name = "id_promotion",nullable = false)
+    @JsonIgnoreProperties("orders")
     private Promotions id_promotion;
 
     public OrdersAreRelatedToPromotions(Orders id_order, Promotions id_promotion) {
