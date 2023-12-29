@@ -20,6 +20,7 @@ public class StoreView {
     private Integer id_game;
     private String title;
     private String genre;
+    private String image;
     private String publisher_name;
     private String website;
     private String platform_name;

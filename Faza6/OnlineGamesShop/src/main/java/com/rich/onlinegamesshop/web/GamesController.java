@@ -55,7 +55,6 @@ public class GamesController {
           gameService.insertGame(title, genre, price, developer, stock, releaseDate, idPublisher, idPlatform);
           return ResponseEntity.ok("Game inserted successfully");
       }catch (Exception e){
-          e.printStackTrace();
           return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Game insertion failed");
       }
     }

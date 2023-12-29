@@ -27,6 +27,8 @@ public class Games {
     @Column(nullable = false)
     private String genre;
 
+    private String image;
+
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 
