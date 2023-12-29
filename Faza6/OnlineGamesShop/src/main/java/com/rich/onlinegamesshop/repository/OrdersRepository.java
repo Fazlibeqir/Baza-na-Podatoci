@@ -4,12 +4,27 @@ import com.rich.onlinegamesshop.model.Orders;
 import com.rich.onlinegamesshop.model.reports.WeeklySalesReport;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
 public interface OrdersRepository extends JpaRepository<Orders, Integer>{
+
+    @Query(value = "SELECT insertOrder(:_status, :_order_date, :_total_amount, :_id_costumer, :_id_payment, :_game_ids,:_promotion_ids)", nativeQuery = true)
+    void insertOrder(
+            @Param("_status") String status,
+            @Param("_order_date") LocalDate orderDate,
+            @Param("_total_amount") BigDecimal totalAmount,
+            @Param("_id_costumer") Integer idCostumer,
+            @Param("_id_payment") Integer idPayment,
+            @Param("_game_ids") Integer[] gameIds,
+            @Param("_promotion_ids") Integer[] promotionIds
+    );
+
     @Query(value = "SELECT c.username," +
             "extract(WEEK FROM o.order_date) as weekNumber, " +
             "COUNT(o.id_order) as totalOrder," +
