@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @Transactional
@@ -22,6 +23,11 @@ public class GameServiceImpl implements GameService {
     @Override
     public Games getGameById(Integer id) {
         return gamesRepository.findById(id).orElseThrow();
+    }
+
+    @Override
+    public List<Games> getAllGames() {
+        return gamesRepository.findAll();
     }
 
     @Override

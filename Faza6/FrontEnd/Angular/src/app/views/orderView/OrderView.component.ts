@@ -4,10 +4,10 @@ import {UserLibraryViewService} from '../../services/viewService/UserLibraryView
 
 @Component({
   selector: 'app-pro',
-  templateUrl: './UserLibraryView.component.html',
-  styleUrls: ['./UserLibraryView.component.css']
+  templateUrl: './OrderView.component.html',
+  styleUrls: ['./OrderView.component.css']
 })
-export class UserLibraryViewComponent implements OnInit{
+export class OrderViewComponent implements OnInit{
     userLibraryViews: UserLibraryView[] = [];
     constructor(private UserLibraryViewService: UserLibraryViewService) {}
   ngOnInit(): void {

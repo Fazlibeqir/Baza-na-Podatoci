@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StoreViewComponent } from "./views/storeView/StoreView.component";
-import {UserLibraryViewComponent} from "./views/userLibraryView/UserLibraryView.component";
+import {OrderViewComponent} from "./views/orderView/OrderView.component";
 import {GameReviewsComponent} from "./views/GameReviews/GameReviews.component";
 import {ReportsComponent} from "./views/reports/reports.component";
 import {GameFromComponent} from "./forms/game-from/game-from.component";
+import {ReviewFormComponent} from "./forms/review-form/review-form.component";
 const routes: Routes = [
   {
     path: '',
@@ -16,8 +17,8 @@ const routes: Routes = [
     component: StoreViewComponent
   },
     {
-      path: 'library',
-      component: UserLibraryViewComponent
+      path: 'orders',
+      component: OrderViewComponent
     },
   {
     path:'Reviews',
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path:'game-form',
     component:GameFromComponent
+  },
+  {
+    path:'review-form',
+    component:ReviewFormComponent
   }
 ];
 

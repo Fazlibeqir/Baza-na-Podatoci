@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
 import {StoreViewService} from "./services/viewService/StoreView.service";
 import {StoreViewComponent} from "./views/storeView/StoreView.component";
-import { UserLibraryViewComponent } from './views/userLibraryView/UserLibraryView.component';
+import { OrderViewComponent } from './views/orderView/OrderView.component';
 import { GameReviewsComponent } from './views/GameReviews/GameReviews.component';
 import {UserLibraryViewService} from "./services/viewService/UserLibraryView.service";
 import {GameReviewsService} from "./services/viewService/GameReviews.service";
@@ -16,16 +16,20 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import { ReviewFormComponent } from './forms/review-form/review-form.component';
+import { OrderFormComponent } from './forms/order-form/order-form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     StoreViewComponent,
-    UserLibraryViewComponent,
+    OrderViewComponent,
     GameReviewsComponent,
     ReportsComponent,
-    GameFromComponent
+    GameFromComponent,
+    ReviewFormComponent,
+    OrderFormComponent
   ],
   imports: [
     MatSnackBarModule,

@@ -1,6 +1,7 @@
 import Big from "big.js";
 
 export class Game {
+    id_game: number;
     title: string;
     genre: string;
     price: Big;
@@ -9,6 +10,7 @@ export class Game {
     releaseDate: Date;
     idPublisher: number;
     constructor(
+      id_game: number,
         title: string,
         genre: string,
         price: Big,
@@ -17,6 +19,7 @@ export class Game {
         releaseDate: Date,
         idPublisher: number,
     ) {
+        this.id_game = id_game;
         this.title = title;
         this.genre = genre;
         this.price = price;

@@ -15,4 +15,5 @@ export class GameReviewsComponent implements OnInit{
       this.gameReviewsViews = data;
     });
     }
+
   }
