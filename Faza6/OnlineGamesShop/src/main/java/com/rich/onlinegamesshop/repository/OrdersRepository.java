@@ -2,6 +2,7 @@ package com.rich.onlinegamesshop.repository;
 
 import com.rich.onlinegamesshop.model.Orders;
 import com.rich.onlinegamesshop.model.reports.WeeklySalesReport;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,8 +15,8 @@ import java.util.List;
 @Repository
 public interface OrdersRepository extends JpaRepository<Orders, Integer>{
 
-    @Query(value = "SELECT insertOrder(:_status, :_order_date, :_total_amount, :_id_costumer, :_id_payment, :_game_ids,:_promotion_ids)", nativeQuery = true)
-    void insertOrder(
+    @Query(value = "SELECT insertOrder(:_status, :_order_date, :_total_amount, :_id_costumer, :_id_payment,:_game_ids,:_promotion_ids)", nativeQuery = true)
+    Integer insertOrder(
             @Param("_status") String status,
             @Param("_order_date") LocalDate orderDate,
             @Param("_total_amount") BigDecimal totalAmount,

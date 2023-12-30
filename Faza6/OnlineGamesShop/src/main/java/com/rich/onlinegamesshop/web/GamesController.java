@@ -29,7 +29,15 @@ public class GamesController {
         this.publisherService = publisherService;
         this.platformService = platformService;
     }
-
+    //TODO:Make a view for One game
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getGameById(@PathVariable Integer id){
+        try {
+            return ResponseEntity.ok(gameService.getGameById(id));
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body("Game not found");
+        }
+    }
     @GetMapping("/publishers")
     public ResponseEntity<List<Publisher>> getAllPublishers(){
         return ResponseEntity.ok(publisherService.getAllPublishers());

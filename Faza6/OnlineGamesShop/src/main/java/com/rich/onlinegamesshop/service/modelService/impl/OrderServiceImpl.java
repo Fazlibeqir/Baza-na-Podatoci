@@ -3,20 +3,47 @@ package com.rich.onlinegamesshop.service.modelService.impl;
 import com.rich.onlinegamesshop.model.reports.MonthlyGameStatisticsReport;
 import com.rich.onlinegamesshop.model.reports.WeeklySalesReport;
 import com.rich.onlinegamesshop.model.reports.YearlyGameStatisticsReport;
+import com.rich.onlinegamesshop.repository.GamesRepository;
 import com.rich.onlinegamesshop.repository.OrdersRepository;
+import com.rich.onlinegamesshop.repository.PromotionsRepository;
 import com.rich.onlinegamesshop.service.modelService.OrderService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService {
     private final OrdersRepository orderRepository;
+    private final GamesRepository gamesRepository;
+    private final PromotionsRepository promotionsRepository;
 
-    public OrderServiceImpl(OrdersRepository orderRepository) {
+    public OrderServiceImpl(OrdersRepository orderRepository, GamesRepository gamesRepository, PromotionsRepository promotionsRepository) {
         this.orderRepository = orderRepository;
+        this.gamesRepository = gamesRepository;
+        this.promotionsRepository = promotionsRepository;
+    }
+
+    @Override
+    @Transactional
+    public void insertOrder(String status, LocalDate orderDate, BigDecimal totalAmount, Integer idCostumer, Integer idPayment, Integer[] gameIds, Integer[] promotionIds) {
+        Integer newOrderId=this.orderRepository.insertOrder(
+                status,
+                orderDate,
+                totalAmount,
+                idCostumer,
+                idPayment,
+                gameIds,
+                promotionIds);
+        if (newOrderId==null || newOrderId==0){
+            throw new IllegalStateException("Order insertion failed");
+        }
     }
 
     @Override

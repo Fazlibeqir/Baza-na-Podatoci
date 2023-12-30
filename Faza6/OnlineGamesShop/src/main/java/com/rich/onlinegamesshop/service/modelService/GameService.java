@@ -7,5 +7,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface GameService {
+    Games getGameById(Integer id);
     void insertGame(String title, String genre, BigDecimal price, String developer, int stock, LocalDate releaseDate, Integer idPublisher, Integer idPlatform);
 }

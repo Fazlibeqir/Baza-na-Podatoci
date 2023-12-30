@@ -1,6 +1,7 @@
 package com.rich.onlinegamesshop.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.rich.onlinegamesshop.model.relations.OrdersAreRelatedToPromotions;
@@ -37,11 +38,11 @@ public class Orders {
     private Payment payment;
 
     @OneToMany(mappedBy = "id_order")
-    @JsonIgnoreProperties("id_order")
+    @JsonIgnore
     private List<OrdersAreRelatedToPromotions> promotions;
 
     @OneToMany(mappedBy = "id_order")
-    @JsonIgnoreProperties("id_order")
+    @JsonIgnore
     private List<OrdersContainsGames> games;
 
     public Orders(String status, LocalDate orderDate,

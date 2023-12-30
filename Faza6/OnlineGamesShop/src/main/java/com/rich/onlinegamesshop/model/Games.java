@@ -48,7 +48,7 @@ public class Games {
     private List<GamesSupportsPlatform> supportedPlatforms;
 
     @OneToMany(mappedBy = "id_game")
-    @JsonIgnoreProperties("ig_game")
+    @JsonIgnore
     private List<OrdersContainsGames> orders;
 
     public Games(String title, String genre, BigDecimal price, String developer, Integer stock, LocalDate releaseDate, Publisher publisher) {
