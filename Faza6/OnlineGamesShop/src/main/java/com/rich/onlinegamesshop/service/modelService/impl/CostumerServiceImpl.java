@@ -16,6 +16,11 @@ public class CostumerServiceImpl implements CostumerService {
     }
 
     @Override
+    public void addCostumer(Costumer costumer) {
+         costumerRepository.save(costumer);
+    }
+
+    @Override
     public List<Costumer> getAllCostumers() {
         return costumerRepository.findAll();
     }

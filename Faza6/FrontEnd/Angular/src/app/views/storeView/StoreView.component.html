@@ -1,10 +1,10 @@
 <button class="btn btn-success" routerLink="/game-form">Add Game</button>
 
 <div class="card-scroll-container">
-  <div class="card-group" #cardGroup>
+  <div class="card-group" [style.width]="cardGroupWidth" #cardGroup>
     <div *ngFor="let item of storeViews">
       <div class="card">
-        <img class="card-img-top" src="{{ item.image }}" alt="Card image cap">
+        <img class="card-img-top" src="{{ item.image }}" style="border-radius: 10px" alt="{{item.title}}">
          <div class="card-body">
           <h5 class="card-title">{{ item.title }}</h5>
           <p class="card-genre">{{ item.genre }}</p>

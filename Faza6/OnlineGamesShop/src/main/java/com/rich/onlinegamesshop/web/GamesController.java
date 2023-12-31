@@ -29,7 +29,7 @@ public class GamesController {
         this.publisherService = publisherService;
         this.platformService = platformService;
     }
-    //TODO:Make a view for One game
+    //TODO:Make a view for One game im not sure if i need it(im not using it)
     @GetMapping("/{id}")
     public ResponseEntity<Object> getGameById(@PathVariable Integer id){
         try {

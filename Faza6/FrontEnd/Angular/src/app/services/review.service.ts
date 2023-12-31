@@ -11,6 +11,7 @@ export class ReviewService {
 
   httpOptions={
     headers:new HttpHeaders({"Content-Type":"application/json"}),
+    responseType:'text' as 'json'
   };
   private baseUrl=environment.apiUrl+"review";
   constructor(
@@ -30,7 +31,7 @@ export class ReviewService {
       idCostumer,
       idGame
     };
-    return this.http.post<any>(`${this.baseUrl}/add`,reviewData,{responseType:'text' as 'json'})
+    return this.http.post<any>(`${this.baseUrl}/add`,reviewData,this.httpOptions)
       .pipe(
         tap(response => console.log(response)),
         catchError(error => {

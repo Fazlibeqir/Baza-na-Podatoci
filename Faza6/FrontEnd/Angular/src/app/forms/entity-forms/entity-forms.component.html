@@ -1,0 +1,182 @@
+<div *ngIf="showSnackbar" [class]="snackbarClass">
+  {{ snackbarMessage }}
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3>Add Costumer</h3>
+      </div>
+      <div class="card-body">
+
+<form [formGroup]="costumerForm" (ngSubmit)="onCostumerSubmit()">
+  <div class="form-group">
+    <label for="nameCostumer">Costumer Name:</label>
+    <input type="text" class="form-control" id="nameCostumer" formControlName="nameCostumer" />
+    <div *ngIf="costumerForm.get('nameCostumer')?.hasError('required') && costumerForm.get('nameCostumer')?.touched" class="text-danger">
+      Costumer Name is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="text" class="form-control" id="email" formControlName="email" />
+    <div *ngIf="costumerForm.get('email')?.hasError('required') && costumerForm.get('email')?.touched" class="text-danger">
+      Email is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" class="form-control" id="password" formControlName="password" />
+    <div *ngIf="costumerForm.get('password')?.hasError('required') && costumerForm.get('password')?.touched" class="text-danger">
+      Password is required.
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!costumerForm.valid">Submit</button>
+</form>
+      </div>
+  </div>
+  </div>
+
+
+
+
+<div *ngIf="showSnackbar" [class]="snackbarClass">
+  {{ snackbarMessage }}
+</div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3>Add Publisher</h3>
+      </div>
+      <div class="card-body">
+<form [formGroup]="publisherForm" (ngSubmit)="onPublisherSubmit()">
+  <div class="form-group">
+    <label for="namePublisher">Publisher Name:</label>
+    <input type="text" class="form-control" id="namePublisher" formControlName="namePublisher" />
+    <div *ngIf="publisherForm.get('namePublisher')?.hasError('required') && publisherForm.get('namePublisher')?.touched" class="text-danger">
+      Publisher Name is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="website">Website:</label>
+    <input type="text" class="form-control" id="website" formControlName="website" />
+    <div *ngIf="publisherForm.get('website')?.hasError('required') && publisherForm.get('website')?.touched" class="text-danger">
+      Website is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="country">Country:</label>
+    <input type="text" class="form-control" id="country" formControlName="country" />
+    <div *ngIf="publisherForm.get('country')?.hasError('required') && publisherForm.get('country')?.touched" class="text-danger">
+      Country is required.
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!publisherForm.valid">Submit</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div *ngIf="showSnackbar" [class]="snackbarClass">
+  {{ snackbarMessage }}
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3>Add Platform</h3>
+      </div>
+      <div class="card-body">
+<form [formGroup]="platformForm" (ngSubmit)="onPlatformSubmit()">
+  <div class="form-group">
+    <label for="namePlatform">Platform Name:</label>
+    <input type="text" class="form-control" id="namePlatform" formControlName="namePlatform" />
+    <div *ngIf="platformForm.get('namePlatform')?.hasError('required') && platformForm.get('namePlatform')?.touched" class="text-danger">
+      Platform Name is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="manufacturer">Manufacturer:</label>
+    <input type="text" class="form-control" id="manufacturer" formControlName="manufacturer" />
+    <div *ngIf="platformForm.get('manufacturer')?.hasError('required') && platformForm.get('manufacturer')?.touched" class="text-danger">
+      Genre is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="releaseDate">Release Date:</label>
+    <input type="date" class="form-control" id="releaseDate" formControlName="releaseDate" />
+    <div *ngIf="platformForm.get('releaseDate')?.hasError('required') && platformForm.get('releaseDate')?.touched" class="text-danger">
+      Release Date is required.</div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!platformForm.valid">Submit</button>
+</form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<div *ngIf="showSnackbar" [class]="snackbarClass">
+  {{ snackbarMessage }}
+</div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3>Add Promotion</h3>
+      </div>
+      <div class="card-body">
+<form [formGroup]="promotionForm" (ngSubmit)="onPromotionSubmit()">
+  <div class="form-group">
+    <label for="namePromotion">Promotion Name:</label>
+    <input type="text" class="form-control" id="namePromotion" formControlName="namePromotion" />
+    <div *ngIf="promotionForm.get('title')?.hasError('required') && promotionForm.get('title')?.touched" class="text-danger">
+      Promotion Name is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="discount">Discount:</label>
+    <input type="text" class="form-control" id="discount" formControlName="discount" />
+    <div *ngIf="promotionForm.get('discount')?.hasError('required') && promotionForm.get('discount')?.touched" class="text-danger">
+      Discount is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="startDate">Start Date:</label>
+    <input type="Date" class="form-control" id="startDate" formControlName="startDate" />
+    <div *ngIf="promotionForm.get('startDate')?.hasError('required') && promotionForm.get('startDate')?.touched" class="text-danger">
+      Start Date is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="endDate">End Date:</label>
+    <input type="Date" class="form-control" id="endDate" formControlName="endDate" />
+    <div *ngIf="promotionForm.get('endDate')?.hasError('required') && promotionForm.get('endDate')?.touched" class="text-danger">
+      End Date is required.</div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!promotionForm.valid">Submit</button>
+</form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

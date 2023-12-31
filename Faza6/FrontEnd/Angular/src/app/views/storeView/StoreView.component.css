@@ -1,3 +1,13 @@
+.card-scroll-container{
+  margin-bottom: 100px;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.card-scroll-container::-webkit-scrollbar {
+  display: none;
+}
 .card{
     background-color: #5b5454;
     border-radius:10px;
@@ -8,7 +18,7 @@
 }
 .card-group {
 
-    width: 50000px; /* set the width to be larger than the container */
+    width: 1861px; /* set the width to be larger than the container */
     display: flex; /* use flexbox to align cards horizontally */
 }
 .card-genre, .card-title, .card-publisher_name, .card-website, .card-platform_name {

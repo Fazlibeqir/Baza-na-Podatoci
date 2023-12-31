@@ -32,7 +32,7 @@ public class ReviewController {
         return ResponseEntity.ok(costumerService.getAllCostumers());
     }
 
-    //TODO:Make on the game view a list of reviews
+    //TODO:Make on the game view a list of reviews not sure if i need it(not using it)
     @GetMapping("/{id}")
     public ResponseEntity<Object> getReviewById(@PathVariable Integer id){
         try {

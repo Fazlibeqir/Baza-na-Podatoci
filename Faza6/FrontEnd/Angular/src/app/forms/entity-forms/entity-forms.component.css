@@ -1,0 +1,31 @@
+/* Add this to your component's CSS file or the global styles */
+.custom-snackbar {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #2196F3; /* Adjust the background color */
+  color: white;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Adjust as needed to make sure it's above other elements */
+}
+.card{
+  background-color: #5b5454;
+  border-radius:10px;
+  color:#fff;
+  display: inline-block;
+  width: 100%; /* set the width of each card */
+  margin-right: 20px; /* add some margin between cards */
+}
+.card-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.card-genre, .card-title, .card-publisher_name, .card-website, .card-platform_name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

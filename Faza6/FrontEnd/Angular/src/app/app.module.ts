@@ -18,6 +18,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { ReviewFormComponent } from './forms/review-form/review-form.component';
 import { OrderFormComponent } from './forms/order-form/order-form.component';
+import { EntityFormsComponent } from './forms/entity-forms/entity-forms.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { OrderFormComponent } from './forms/order-form/order-form.component';
     ReportsComponent,
     GameFromComponent,
     ReviewFormComponent,
-    OrderFormComponent
+    OrderFormComponent,
+    EntityFormsComponent
   ],
   imports: [
     MatSnackBarModule,

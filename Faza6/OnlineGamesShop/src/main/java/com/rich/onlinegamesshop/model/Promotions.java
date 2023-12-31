@@ -1,5 +1,6 @@
 package com.rich.onlinegamesshop.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -24,7 +25,9 @@ public class Promotions {
 
     private String title;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
     private BigDecimal discountPercentage;

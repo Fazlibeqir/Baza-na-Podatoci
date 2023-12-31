@@ -16,6 +16,11 @@ public class PublisherServiceImpl implements PublisherService {
     }
 
     @Override
+    public void addPublisher(Publisher publisher) {
+        publisherRepository.save(publisher);
+    }
+
+    @Override
     public List<Publisher> getAllPublishers() {
         return publisherRepository.findAll();
     }

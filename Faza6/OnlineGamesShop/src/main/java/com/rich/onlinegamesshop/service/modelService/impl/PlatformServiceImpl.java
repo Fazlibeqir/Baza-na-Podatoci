@@ -16,6 +16,11 @@ public class PlatformServiceImpl implements PlatformService {
     }
 
     @Override
+    public void addPlatform(Platform platform) {
+        platformRepository.save(platform);
+    }
+
+    @Override
     public List<Platform> getAllPlatforms() {
         return platformRepository.findAll();
     }
