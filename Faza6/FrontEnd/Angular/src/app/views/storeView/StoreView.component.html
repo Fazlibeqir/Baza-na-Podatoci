@@ -4,8 +4,8 @@
   <div class="card-group" [style.width]="cardGroupWidth" #cardGroup>
     <div *ngFor="let item of storeViews">
       <div class="card">
-        <img class="card-img-top" src="{{ item.image }}" style="border-radius: 10px" alt="{{item.title}}">
-         <div class="card-body">
+        <img class="card-img-top" src="{{ item.image }}" alt="{{item.title}}">
+        <div class="card-body">
           <h5 class="card-title">{{ item.title }}</h5>
           <p class="card-genre">{{ item.genre }}</p>
           <p class="card-publisher_name">{{ item.publisher_name }}</p>
@@ -13,7 +13,7 @@
           <p class="card-platform_name">{{ item.platform_name }}</p>
         </div>
         <div class="card-footer">
-            <small class="text-muted">{{ item.manufacturer }}</small>
+          <small class="text-muted">{{ item.manufacturer }}</small>
         </div>
       </div>
     </div>

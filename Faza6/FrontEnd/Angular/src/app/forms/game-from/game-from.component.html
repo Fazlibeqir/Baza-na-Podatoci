@@ -23,6 +23,9 @@
     <div *ngIf="gameForm.get('image')?.hasError('required') && gameForm.get('image')?.touched" class="text-danger">
       Image URL is required.
     </div>
+    <div *ngIf="gameForm.get('image')?.hasError('invalidUrl') && !gameForm.get('image')?.hasError('required') && gameForm.get('image')?.touched" class="text-danger">
+      Please enter a valid HTTPS URL.
+    </div>
   </div>
 
   <div class="form-group">

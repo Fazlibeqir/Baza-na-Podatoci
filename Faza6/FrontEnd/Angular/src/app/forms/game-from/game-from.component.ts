@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {GameService} from "../../services/game.service";
 import {Subscription} from "rxjs";
 import {Publisher} from "../../model/Publisher";
@@ -41,7 +41,7 @@ export class GameFromComponent implements OnInit,OnDestroy{
     this.gameForm=this.formBuilder.group({
     title:['',Validators.required],
     genre:['',Validators.required],
-    image:['',Validators.required],
+    image:['',[Validators.required,this.validateImageUrl]],
     price:['',Validators.required],
     developer:['',Validators.required],
     stock:['',Validators.required],
@@ -49,6 +49,13 @@ export class GameFromComponent implements OnInit,OnDestroy{
     selectedPublisher:['',Validators.required],
     selectedPlatform:['',Validators.required]
   });
+  }
+  validateImageUrl(control:AbstractControl){
+    const url=control.value as string
+    if(!url.startsWith('https://')){
+      return {invalidUrl:true};
+    }
+    return null;
   }
   onSubmit(){
     if(this.gameForm.valid){
