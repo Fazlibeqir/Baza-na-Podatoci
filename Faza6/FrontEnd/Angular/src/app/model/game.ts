@@ -4,6 +4,7 @@ export class Game {
     id_game: number;
     title: string;
     genre: string;
+    image: string;
     price: Big;
     developer: string;
     stock: number;
@@ -13,6 +14,7 @@ export class Game {
       id_game: number,
         title: string,
         genre: string,
+        image: string,
         price: Big,
         developer: string,
         stock: number,
@@ -22,6 +24,7 @@ export class Game {
         this.id_game = id_game;
         this.title = title;
         this.genre = genre;
+        this.image = image;
         this.price = price;
         this.developer = developer;
         this.stock = stock;

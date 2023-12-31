@@ -12,9 +12,14 @@ import {Platform} from "../model/Platform";
 export class GameService {
   httpOptions={
     headers:new HttpHeaders({"Content-Type":"application/json"}),
+    responseType:'text' as 'json'
   };
   private baseUrl=environment.apiUrl+"game";
   constructor(private http:HttpClient) { }
+  getGames():Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/all`);
+  }
+
     getPublishers():Observable<Publisher[]>{
         return this.http.get<Publisher[]>(`${this.baseUrl}/publishers`);
     }
@@ -24,6 +29,7 @@ export class GameService {
     insertGame(
     title:string,
     genre:string,
+    image:string,
     price:Big,
     developer: string,
     stock: number,
@@ -34,6 +40,7 @@ export class GameService {
     const gameData={
       title,
       genre,
+      image,
       price,
       developer,
       stock,
@@ -41,7 +48,7 @@ export class GameService {
       idPublisher,
       idPlatform
     };
-    return this.http.post<any>(`${this.baseUrl}/add`,gameData,{responseType:'text' as 'json'})
+    return this.http.post<any>(`${this.baseUrl}/add`,gameData,this.httpOptions)
       .pipe(
       tap(response => console.log(response)),
       catchError(error => {

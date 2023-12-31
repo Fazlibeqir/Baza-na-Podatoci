@@ -31,12 +31,12 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public void insertGame(String title, String genre, BigDecimal price, String developer, int stock, LocalDate releaseDate, Integer idPublisher, Integer idPlatform) {
+    public void insertGame(String title, String genre,String image, BigDecimal price, String developer, int stock, LocalDate releaseDate, Integer idPublisher, Integer idPlatform) {
         gamesRepository.insertGame(title, genre,
                 price, developer,
                 stock,
                 releaseDate,
                 idPublisher
-                , idPlatform);
+                , idPlatform,image);
     }
 }

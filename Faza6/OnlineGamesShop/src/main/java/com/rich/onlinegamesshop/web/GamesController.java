@@ -1,6 +1,7 @@
 package com.rich.onlinegamesshop.web;
 
 
+import com.rich.onlinegamesshop.model.Games;
 import com.rich.onlinegamesshop.model.Platform;
 import com.rich.onlinegamesshop.model.Publisher;
 import com.rich.onlinegamesshop.service.modelService.GameService;
@@ -38,6 +39,10 @@ public class GamesController {
             return ResponseEntity.badRequest().body("Game not found");
         }
     }
+    @GetMapping("/all")
+    public ResponseEntity<List<Games>> getAllGames(){
+        return ResponseEntity.ok(gameService.getAllGames());
+    }
     @GetMapping("/publishers")
     public ResponseEntity<List<Publisher>> getAllPublishers(){
         return ResponseEntity.ok(publisherService.getAllPublishers());
@@ -52,6 +57,7 @@ public class GamesController {
       try {
           String title = (String) gameData.get("title");
           String genre = (String) gameData.get("genre");
+          String image = (String) gameData.get("image");
           BigDecimal price = new BigDecimal(String.valueOf(gameData.get("price")));
           String developer = (String) gameData.get("developer");
           int stock = (int) gameData.get("stock");
@@ -60,7 +66,7 @@ public class GamesController {
           Integer idPublisher = Integer.parseInt((String)  gameData.get("idPublisher"));
           Integer idPlatform = Integer.parseInt((String) gameData.get("idPlatform"));
 
-          gameService.insertGame(title, genre, price, developer, stock, releaseDate, idPublisher, idPlatform);
+          gameService.insertGame(title, genre,image ,price, developer, stock, releaseDate, idPublisher, idPlatform);
           return ResponseEntity.ok("Game inserted successfully");
       }catch (Exception e){
           return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Game insertion failed");

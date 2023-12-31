@@ -1,1 +1,71 @@
-<p>order-form works!</p>
+<div *ngIf="showSnackbar" [class]="snackbarClass">
+  {{ snackbarMessage }}
+</div>
+<form [formGroup]="orderForm" (ngSubmit)="onOrderSubmit()" class="mt-4">
+  <div class="form-group">
+    <label for="status">Status:</label>
+    <input type="text" id="status" class="form-control" formControlName="status">
+    <div *ngIf="orderForm.get('status')?.hasError('required') && orderForm.get('status')?.touched" class="text-danger">
+      Status is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="orderDate">Order Date:</label>
+    <input type="date" id="orderDate" class="form-control" formControlName="order_date" required>
+    <div *ngIf="orderForm.get('order_date')?.hasError('required') && orderForm.get('order_date')?.touched" class="text-danger">
+      Order Date is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="totalAmount">Total Amount:</label>
+    <input type="number" id="totalAmount" class="form-control" formControlName="total_amount" required>
+    <div *ngIf="orderForm.get('total_amount')?.hasError('required') && orderForm.get('total_amount')?.touched" class="text-danger">
+      Total Amount is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="customerId">Customer ID:</label>
+    <input type="number" id="customerId" class="form-control" formControlName="id_costumer" required>
+    <div *ngIf="orderForm.get('id_costumer')?.hasError('required') && orderForm.get('id_costumer')?.touched" class="text-danger">
+      Title is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="paymentId">Payment ID:</label>
+    <input type="number" id="paymentId" class="form-control" formControlName="id_payment" required>
+    <div *ngIf="orderForm.get('id_payment')?.hasError('required') && orderForm.get('id_payment')?.touched" class="text-danger">
+      Payment ID is required.
+    </div>
+  </div>
+
+  <!-- Games Section -->
+  <p>Select by holding Ctrl</p>
+  <div class="form-group">
+    <label for="selectedGames">Select Games:</label>
+    <select id="selectedGames" class="form-control" formControlName="selectedGames" multiple>
+      <option *ngFor="let gameItem of games" [value]="gameItem.id_game">{{ gameItem.title }}</option>
+    </select>
+    <div *ngIf="orderForm.get('selectedGames')?.hasError('required') && orderForm.get('selectedGames')?.touched" class="text-danger">
+      Select the games you want is REQUIRED.
+    </div>
+  </div>
+
+  <!-- Promotions Section -->
+  <div class="form-group">
+    <label for="selectedPromotions">Select Promotions:</label>
+    <select id="selectedPromotions" class="form-control" formControlName="selectedPromotions" multiple>
+      <option *ngFor="let promotionItem of promotions" [value]="promotionItem.id_promotion">{{ promotionItem.title }}</option>
+    </select>
+    <div *ngIf="orderForm.get('selectedPromotions')?.hasError('required') && orderForm.get('selectedPromotions')?.touched" class="text-danger">
+      Select the promotions that are available is REQUIRED.
+    </div>
+  </div>
+
+
+
+  <button type="submit" class="btn btn-primary mt-5">Submit Order</button>
+</form>

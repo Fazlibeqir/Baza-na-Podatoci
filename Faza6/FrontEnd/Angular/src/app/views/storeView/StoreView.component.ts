@@ -18,7 +18,7 @@ export class StoreViewComponent implements OnInit{
     }
     getItems(){
       this.StoreViewService.getAllStoreView().subscribe((data:StoreView[])=>{
-        this.storeViews=data;
+        this.storeViews=data.reverse();
         this.updateCardGroupWidth();
       });
     }

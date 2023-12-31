@@ -41,6 +41,7 @@ export class GameFromComponent implements OnInit,OnDestroy{
     this.gameForm=this.formBuilder.group({
     title:['',Validators.required],
     genre:['',Validators.required],
+    image:['',Validators.required],
     price:['',Validators.required],
     developer:['',Validators.required],
     stock:['',Validators.required],
@@ -48,14 +49,14 @@ export class GameFromComponent implements OnInit,OnDestroy{
     selectedPublisher:['',Validators.required],
     selectedPlatform:['',Validators.required]
   });
-  }// Assuming it's the ID
+  }
   onSubmit(){
     if(this.gameForm.valid){
       const formData=this.gameForm.value;
-
       const insertGameSubscription= this.gameService.insertGame(
         formData.title,
         formData.genre,
+        formData.image,
         formData.price,
         formData.developer,
         formData.stock,

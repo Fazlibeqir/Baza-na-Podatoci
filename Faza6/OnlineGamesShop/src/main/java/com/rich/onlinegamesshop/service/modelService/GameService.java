@@ -9,5 +9,5 @@ import java.util.List;
 public interface GameService {
     Games getGameById(Integer id);
     List<Games> getAllGames();
-    void insertGame(String title, String genre, BigDecimal price, String developer, int stock, LocalDate releaseDate, Integer idPublisher, Integer idPlatform);
+    void insertGame(String title, String genre,String image, BigDecimal price, String developer, int stock, LocalDate releaseDate, Integer idPublisher, Integer idPlatform);
 }

@@ -7,6 +7,7 @@ import {ReportsComponent} from "./views/reports/reports.component";
 import {GameFromComponent} from "./forms/game-from/game-from.component";
 import {ReviewFormComponent} from "./forms/review-form/review-form.component";
 import {EntityFormsComponent} from "./forms/entity-forms/entity-forms.component";
+import {OrderFormComponent} from "./forms/order-form/order-form.component";
 const routes: Routes = [
   {
     path: '',
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path:'review-form',
     component:ReviewFormComponent
+  },
+  {
+    path:'order-form',
+    component:OrderFormComponent
   },
   {
     path: 'entity-forms',
