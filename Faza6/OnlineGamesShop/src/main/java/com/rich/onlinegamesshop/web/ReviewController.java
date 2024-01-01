@@ -32,16 +32,8 @@ public class ReviewController {
         return ResponseEntity.ok(costumerService.getAllCostumers());
     }
 
-    //TODO:Make on the game view a list of reviews not sure if i need it(not using it)
-    @GetMapping("/{id}")
-    public ResponseEntity<Object> getReviewById(@PathVariable Integer id){
-        try {
-            return ResponseEntity.ok(reviewService.getReviewById(id));
-        }catch (Exception e){
-            return ResponseEntity.badRequest().body("Review not found");
-        }
-    }
-    //TODO:Make a form inside the game and add the review there
+
+    //TODO:Make a form inside the game and add the review there (idk if i do this)
     @PostMapping("/add")
     public ResponseEntity<String> addReview(@RequestBody Map<String,Object> reviewData){
        try {

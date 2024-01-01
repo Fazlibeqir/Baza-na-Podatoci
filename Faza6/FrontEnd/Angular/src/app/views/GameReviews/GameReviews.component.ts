@@ -12,7 +12,7 @@ export class GameReviewsComponent implements OnInit{
   constructor(private GameReviewsService: GameReviewsService) {}
   ngOnInit(): void {
     this.GameReviewsService.getAllGameReviews().subscribe((data: GameReviewsView[]) => {
-      this.gameReviewsViews = data;
+      this.gameReviewsViews = data.reverse();
     });
     }
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+// import {SharedService} from "./services/sharedService/shared.service";
 
 
 @Component({
@@ -8,5 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title="Online Game Shop";
+  searchTerm:string='';
+  constructor(
+   // private sharedService:SharedService
+  ){}
 
+  // search():void{
+  //   this.sharedService.setSearchTerm(this.searchTerm);
+  // }
 }

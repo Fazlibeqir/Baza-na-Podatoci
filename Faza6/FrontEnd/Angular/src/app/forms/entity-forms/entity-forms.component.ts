@@ -6,6 +6,7 @@ import {Costumer} from "../../model/costumer";
 import {Publisher} from "../../model/Publisher";
 import {Platform} from "../../model/Platform";
 import {Promotion} from "../../model/promotion";
+import {Payment} from "../../model/payment";
 
 @Component({
   selector: 'app-entity-forms',
@@ -21,11 +22,14 @@ export class EntityFormsComponent implements OnInit, OnDestroy{
   platformForm: FormGroup;
   // @ts-ignore
   promotionForm: FormGroup;
+  // @ts-ignore
+  paymentForm: FormGroup;
 
   private subCostumer: Subscription=new Subscription();
   private subPlatform: Subscription=new Subscription();
   private subPromotion: Subscription=new Subscription();
   private subPublisher: Subscription=new Subscription();
+  private subPayment: Subscription=new Subscription();
   showSnackbar: boolean=false;
   snackbarMessage: string | undefined;
   snackbarClass: string ='custom-snackbar';
@@ -40,6 +44,7 @@ export class EntityFormsComponent implements OnInit, OnDestroy{
     this.buildPublisherForm();
     this.buildPlatformForm();
     this.buildPromotionForm();
+    this.buildPaymentForm();
   }
 
 
@@ -153,6 +158,32 @@ export class EntityFormsComponent implements OnInit, OnDestroy{
       this.subPromotion.add(insertPromotionSubscription);
     }
   }
+  private buildPaymentForm() {
+    this.paymentForm=this.formBuilder.group({
+      paymentMethod:['',Validators.required],
+      date:['',Validators.required],
+      amount:['',Validators.required]
+    });
+  }
+  onPaymentSubmit(){
+    if(this.paymentForm.valid){
+      const formData=this.paymentForm.value;
+      const newPayment =new Payment(
+        0,
+        formData.paymentMethod,
+        formData.date,
+        formData.amount);
+      const insertPaymentSubscription= this.entityService.addPayment(
+        newPayment
+      ).subscribe(response =>{
+          this.showMessage(response,'alert-success');
+        },
+        error => {
+          this.showMessage(error,'alert-danger');
+        });
+      this.subPayment.add(insertPaymentSubscription);
+    }
+  }
   private showMessage(message: string,cssClass:string): void {
     this.snackbarMessage=message;
     this.snackbarClass=`custom-snackbar ${cssClass}`;
@@ -168,4 +199,6 @@ export class EntityFormsComponent implements OnInit, OnDestroy{
     this.subPromotion.unsubscribe();
     this.subPublisher.unsubscribe();
   }
+
+
 }

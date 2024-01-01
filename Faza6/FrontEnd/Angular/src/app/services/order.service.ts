@@ -17,6 +17,12 @@ export class OrderService {
   constructor(
     private http:HttpClient,
   ){}
+  getCostumers(){
+    return this.http.get<any>(`${this.baseUrl}/costumers`);
+  }
+  getPayments(){
+    return this.http.get<any>(`${this.baseUrl}/payments`);
+  }
 
   insertOrder(status:string,orderDate:Date,totalAmount:Big,idCostumer:number,idPayment:number,idGames:number[],idPromotions:number[]):Observable<any>{
     const orderData={

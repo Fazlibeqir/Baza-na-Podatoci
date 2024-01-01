@@ -6,6 +6,8 @@ import {GameService} from "../../services/game.service";
 import {PromotionService} from "../../services/promotion.service";
 import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Subscription} from "rxjs";
+import {Payment} from "../../model/payment";
+import {Costumer} from "../../model/costumer";
 
 @Component({
   selector: 'app-order-form',
@@ -21,6 +23,8 @@ export class OrderFormComponent implements OnInit, OnDestroy{
   snackbarClass: string ='custom-snackbar';
   games:Game[]=[];
   promotions:Promotion[]=[];
+  payments:Payment[]=[];
+  costumers:Costumer[]=[];
 
   constructor(private orderService:OrderService,
               private gameService:GameService,
@@ -31,6 +35,8 @@ export class OrderFormComponent implements OnInit, OnDestroy{
     this.BuildForm();
     this.getGames();
     this.getPromotions();
+    this.getCostumers();
+    this.getPayments();
   }
   getGames() {
     this.gameService.getGames().subscribe((data: Game[]) => {
@@ -40,6 +46,16 @@ export class OrderFormComponent implements OnInit, OnDestroy{
   getPromotions(){
     this.promotionService.getPromotions().subscribe((data:Promotion[])=>{
       this.promotions=data;
+    });
+  }
+  getCostumers(){
+    this.orderService.getCostumers().subscribe((data:Costumer[])=>{
+      this.costumers=data;
+    });
+  }
+  getPayments(){
+    this.orderService.getPayments().subscribe((data:Payment[])=>{
+      this.payments=data;
     });
   }
 

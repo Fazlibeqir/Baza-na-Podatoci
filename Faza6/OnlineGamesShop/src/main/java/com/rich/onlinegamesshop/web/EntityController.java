@@ -1,13 +1,7 @@
 package com.rich.onlinegamesshop.web;
 
-import com.rich.onlinegamesshop.model.Costumer;
-import com.rich.onlinegamesshop.model.Platform;
-import com.rich.onlinegamesshop.model.Promotions;
-import com.rich.onlinegamesshop.model.Publisher;
-import com.rich.onlinegamesshop.service.modelService.CostumerService;
-import com.rich.onlinegamesshop.service.modelService.PlatformService;
-import com.rich.onlinegamesshop.service.modelService.PromotionService;
-import com.rich.onlinegamesshop.service.modelService.PublisherService;
+import com.rich.onlinegamesshop.model.*;
+import com.rich.onlinegamesshop.service.modelService.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,12 +15,18 @@ public class EntityController {
     private final CostumerService costumerService;
     private final PlatformService platformService;
     private final PublisherService publisherService;
+    private final PaymentService paymentService;
 
-    public EntityController(PromotionService promotionService, CostumerService costumerService, PlatformService platformService, PublisherService publisherService) {
+    public EntityController(PromotionService promotionService,
+                            CostumerService costumerService,
+                            PlatformService platformService,
+                            PublisherService publisherService,
+                            PaymentService paymentService) {
         this.promotionService = promotionService;
         this.costumerService = costumerService;
         this.platformService = platformService;
         this.publisherService = publisherService;
+        this.paymentService = paymentService;
     }
     @PostMapping("/costumer/add")
     public ResponseEntity<String> addCostumer(@RequestBody Costumer costumer){
@@ -63,6 +63,15 @@ public class EntityController {
             return ResponseEntity.ok("Publisher added successfully");
         }catch (Exception e){
             return ResponseEntity.badRequest().body("Publisher insertion failed");
+        }
+    }
+    @PostMapping("/payment/add")
+    public ResponseEntity<String> addPayment(@RequestBody Payment payment){
+        try {
+            paymentService.addPayment(payment);
+            return ResponseEntity.ok("Payment added successfully");
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body("Payment insertion failed");
         }
     }
 }

@@ -6,6 +6,7 @@ import {catchError, tap, throwError} from "rxjs";
 import {Publisher} from "../model/Publisher";
 import {Platform} from "../model/Platform";
 import {Promotion} from "../model/promotion";
+import {Payment} from "../model/payment";
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,15 @@ export class EntityService {
         }));}
     addPromotion(promotion:Promotion){
     return this.http.post<any>(`${this.baseUrl}/promotion/add`,promotion,this.httpOptions)
+      .pipe(
+        tap(response => console.log(response)),
+        catchError(error =>{
+          console.error(error);
+          const errorMessage=error.error?error.error:'Server error';
+          return throwError(errorMessage);
+        }));}
+    addPayment(payment:Payment){
+    return this.http.post<any>(`${this.baseUrl}/payment/add`,payment,this.httpOptions)
       .pipe(
         tap(response => console.log(response)),
         catchError(error =>{

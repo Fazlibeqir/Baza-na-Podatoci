@@ -18,13 +18,13 @@ export class ReportsComponent implements OnInit{
 
   ngOnInit(): void {
     this.ReportsService.getWeekly().subscribe((data:WeeklySalesReport[])=>{
-      this.weeklyReport=data;
+      this.weeklyReport=data.reverse();
     });
     this.ReportsService.getMonthly().subscribe((data:MonthlyGameStatisticsReport[])=>{
-      this.monthlyReport=data;
+      this.monthlyReport=data.reverse();
     });
     this.ReportsService.getYearly().subscribe((data:YearlyGameStatisticsReport[])=>{
-      this.yearlyReport=data;
+      this.yearlyReport=data.reverse();
     });
   }
 

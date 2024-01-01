@@ -12,7 +12,7 @@ export class OrderViewComponent implements OnInit{
     constructor(private UserLibraryViewService: UserLibraryViewService) {}
   ngOnInit(): void {
     this.UserLibraryViewService.getAllUserLibraryView().subscribe((data: UserLibraryView[]) => {
-      this.userLibraryViews = data;
+      this.userLibraryViews = data.reverse();
     });
   }
 
