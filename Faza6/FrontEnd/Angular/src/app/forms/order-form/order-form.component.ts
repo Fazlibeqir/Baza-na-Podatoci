@@ -40,22 +40,22 @@ export class OrderFormComponent implements OnInit, OnDestroy{
   }
   getGames() {
     this.gameService.getGames().subscribe((data: Game[]) => {
-      this.games = data;
+      this.games = data.reverse();
     });
   }
   getPromotions(){
     this.promotionService.getPromotions().subscribe((data:Promotion[])=>{
-      this.promotions=data;
+      this.promotions=data.reverse();
     });
   }
   getCostumers(){
     this.orderService.getCostumers().subscribe((data:Costumer[])=>{
-      this.costumers=data;
+      this.costumers=data.reverse();
     });
   }
   getPayments(){
     this.orderService.getPayments().subscribe((data:Payment[])=>{
-      this.payments=data;
+      this.payments=data.reverse();
     });
   }
 

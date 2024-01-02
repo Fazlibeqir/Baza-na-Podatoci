@@ -19,6 +19,12 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import { ReviewFormComponent } from './forms/review-form/review-form.component';
 import { OrderFormComponent } from './forms/order-form/order-form.component';
 import { EntityFormsComponent } from './forms/entity-forms/entity-forms.component';
+import {ReportsService} from "./services/reportsService/reports.service";
+import {EntityService} from "./services/entity.service";
+import {GameService} from "./services/game.service";
+import {OrderService} from "./services/order.service";
+import {PromotionService} from "./services/promotion.service";
+import {ReviewService} from "./services/review.service";
 
 
 @NgModule({
@@ -43,7 +49,15 @@ import { EntityFormsComponent } from './forms/entity-forms/entity-forms.componen
     MatToolbarModule,
     FormsModule
   ],
-  providers: [StoreViewService,UserLibraryViewService,GameReviewsService],
+  providers: [StoreViewService,
+    UserLibraryViewService,
+    GameReviewsService,
+    ReportsService,
+    EntityService,
+    GameService,
+    OrderService,
+    PromotionService,
+    ReviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

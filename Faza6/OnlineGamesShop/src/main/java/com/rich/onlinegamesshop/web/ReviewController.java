@@ -37,7 +37,7 @@ public class ReviewController {
     @PostMapping("/add")
     public ResponseEntity<String> addReview(@RequestBody Map<String,Object> reviewData){
        try {
-           Integer rating = (Integer) reviewData.get("rating");
+           Integer rating = (int) Math.round((Double) reviewData.get("rating"));
            String comment = (String) reviewData.get("comment");
 
         Integer idCostumer =Integer.parseInt((String) reviewData.get("idCostumer"));

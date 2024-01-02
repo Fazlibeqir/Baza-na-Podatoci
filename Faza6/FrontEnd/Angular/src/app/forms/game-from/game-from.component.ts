@@ -4,6 +4,7 @@ import {GameService} from "../../services/game.service";
 import {Subscription} from "rxjs";
 import {Publisher} from "../../model/Publisher";
 import {Platform} from "../../model/Platform";
+import {Game} from "../../model/game";
 
 @Component({
   selector: 'app-game-from',
@@ -60,7 +61,8 @@ export class GameFromComponent implements OnInit,OnDestroy{
   onSubmit(){
     if(this.gameForm.valid){
       const formData=this.gameForm.value;
-      const insertGameSubscription= this.gameService.insertGame(
+      const newGame = new Game(
+        0,
         formData.title,
         formData.genre,
         formData.image,
@@ -70,8 +72,8 @@ export class GameFromComponent implements OnInit,OnDestroy{
         formData.releaseDate,
         formData.selectedPublisher,
         formData.selectedPlatform
-
-      ).subscribe(
+      );
+      const insertGameSubscription= this.gameService.insertGame(newGame).subscribe(
         response => {
           console.log(response);
           this.showMessage(response,'alert-success');

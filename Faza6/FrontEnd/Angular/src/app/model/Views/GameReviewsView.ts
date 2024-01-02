@@ -1,4 +1,3 @@
-//TODO: make this a class model with all the fields then make a service to get all the data from the database and then make a component to display the data
 export class GameReviewsView{
   id_review:number;
   rating:number;

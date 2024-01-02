@@ -10,6 +10,7 @@ export class Game {
     stock: number;
     releaseDate: Date;
     idPublisher: number;
+    idPlatform: number;
     constructor(
       id_game: number,
         title: string,
@@ -20,6 +21,7 @@ export class Game {
         stock: number,
         releaseDate: Date,
         idPublisher: number,
+        idPlatform: number
     ) {
         this.id_game = id_game;
         this.title = title;
@@ -30,5 +32,6 @@ export class Game {
         this.stock = stock;
         this.releaseDate = releaseDate;
         this.idPublisher = idPublisher;
+        this.idPlatform = idPlatform;
     }
 }

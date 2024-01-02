@@ -28,12 +28,12 @@ export class ReviewFormComponent implements OnInit,OnDestroy{
   games:Game[]=[];
 getGames(){
   this.reviewsService.getGames().subscribe((data:any)=>{
-    this.games=data;
+    this.games=data.reverse();
   });
 }
 getCostumers(){
   this.reviewsService.getCostumers().subscribe((data:any)=>{
-    this.costumers=data;
+    this.costumers=data.reverse();
   });
 }
 

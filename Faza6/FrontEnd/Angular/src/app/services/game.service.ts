@@ -5,6 +5,7 @@ import {environment} from "../../environments/environment";
 import Big from "big.js";
 import {Publisher} from "../model/Publisher";
 import {Platform} from "../model/Platform";
+import {Game} from "../model/game";
 
 @Injectable({
   providedIn: 'root'
@@ -26,29 +27,8 @@ export class GameService {
     getPlatforms():Observable<Platform[]>{
       return this.http.get<Platform[]>(`${this.baseUrl}/platforms`);
     }
-    insertGame(
-    title:string,
-    genre:string,
-    image:string,
-    price:Big,
-    developer: string,
-    stock: number,
-    releaseDate: string,
-    idPublisher:number,
-    idPlatform:number
-  ):Observable<any>{
-    const gameData={
-      title,
-      genre,
-      image,
-      price,
-      developer,
-      stock,
-      releaseDate,
-      idPublisher,
-      idPlatform
-    };
-    return this.http.post<any>(`${this.baseUrl}/add`,gameData,this.httpOptions)
+    insertGame(game:Game):Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}/add`,game,this.httpOptions)
       .pipe(
       tap(response => console.log(response)),
       catchError(error => {
