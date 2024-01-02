@@ -1,0 +1,9 @@
+create function insertreview(_rating integer, _comment text, _id_costumer integer, _id_game integer) returns void
+    language plpgsql
+as
+$$
+BEGIN
+    INSERT INTO review(rating, comment, id_costumer, id_game)
+    VALUES (_rating, _comment, _id_costumer, _id_game);
+END;
+$$;

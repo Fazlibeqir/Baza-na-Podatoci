@@ -1,0 +1,117 @@
+create table costumer
+(
+    id_costumer serial
+        primary key,
+    username    varchar(8)   not null,
+    email       varchar(255) not null,
+    password    varchar(255) not null
+);
+
+create table games
+(
+    id_game      serial
+        primary key,
+    title        varchar(255),
+    genre        varchar(255)   not null,
+    price        numeric(10, 2) not null,
+    developer    varchar(255),
+    stock        integer        not null,
+    release_date date,
+    id_publisher integer        not null
+        references publisher,
+    image        varchar(255)   not null
+        constraint check_image_url
+            check ((image)::text ~ '^https?://.*$'::text)
+);
+
+create table games_supports_platform
+(
+    id_game     integer not null
+        references games,
+    id_platform integer not null
+        references platform,
+    constraint pk_games_supports_platform
+        primary key (id_game, id_platform)
+);
+
+create table orders
+(
+    id_order     serial
+        primary key,
+    status       varchar(255),
+    order_date   date,
+    total_amount numeric(38, 2),
+    id_costumer  integer not null
+        references costumer,
+    id_payment   integer not null
+        references payment
+);
+
+create table orders_are_related_to_promotions
+(
+    id_order     integer not null
+        references orders,
+    id_promotion integer not null
+        references promotions,
+    constraint pk_order_are_related_to_promotions
+        primary key (id_order, id_promotion)
+);
+
+create table orders_contains_games
+(
+    id_order integer not null
+        references orders,
+    id_game  integer not null
+        references games,
+    constraint pk_orders_contains_games
+        primary key (id_order, id_game)
+);
+
+create table payment
+(
+    id_payment     serial
+        primary key,
+    payment_method varchar(255) not null,
+    date           date,
+    amount         numeric(10, 2)
+);
+
+create table platform
+(
+    id_platform  serial
+        primary key,
+    name         varchar(255) not null,
+    manufacturer varchar(255) not null,
+    release_date date         not null
+);
+
+create table promotions
+(
+    id_promotion        serial
+        primary key,
+    title               varchar(255),
+    start_date          date          not null,
+    end_date            date          not null,
+    discount_percentage numeric(5, 2) not null
+);
+
+create table publisher
+(
+    id_publisher serial
+        primary key,
+    name         varchar(255) not null,
+    website      varchar(255) not null,
+    country      varchar(30)  not null
+);
+
+create table review
+(
+    id_review   serial
+        primary key,
+    rating      integer,
+    comment     text,
+    id_costumer integer not null
+        references costumer,
+    id_game     integer not null
+        references games
+);

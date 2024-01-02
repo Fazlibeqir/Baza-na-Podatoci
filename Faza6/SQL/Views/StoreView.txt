@@ -1,0 +1,13 @@
+create view storeview (id_game, title, genre, image, publisher_name, website, platform_name, manufacturer) as
+SELECT g.id_game,
+       g.title,
+       g.genre,
+       g.image,
+       ps.name AS publisher_name,
+       ps.website,
+       pf.name AS platform_name,
+       pf.manufacturer
+FROM games g
+         JOIN publisher ps ON ps.id_publisher = g.id_publisher
+         JOIN games_supports_platform gsp ON g.id_game = gsp.id_game
+         JOIN platform pf ON pf.id_platform = gsp.id_platform;

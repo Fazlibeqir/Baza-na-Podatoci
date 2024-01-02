@@ -1,0 +1,17 @@
+create function insertgame(_title character varying, _genre character varying, _price numeric, _developer character varying, _stock integer, _release_date date, _id_publisher integer, _id_platform integer, _image character varying) returns void
+    language plpgsql
+as
+$$
+DECLARE
+    new_game_id integer;
+BEGIN
+    INSERT INTO games(title, genre, price, developer, stock, release_date, id_publisher, image)
+    VALUES(_title, _genre, _price, _developer, _stock, _release_date,_id_publisher, _image);
+
+
+    SELECT id_game INTO new_game_id FROM games WHERE title = _title AND release_date = _release_date;
+
+    INSERT INTO games_supports_platform(id_game, id_platform)
+    VALUES(new_game_id, _id_platform);
+END;
+$$;

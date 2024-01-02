@@ -1,0 +1,14 @@
+create view gamereviewsview(id_review, rating, comment, username, id_game, game_title, game_genre) as
+SELECT r.id_review,
+       r.rating,
+       r.comment,
+       c.username,
+       g.id_game,
+       g.title AS game_title,
+       g.genre AS game_genre
+FROM review r
+         JOIN costumer c ON r.id_costumer = c.id_costumer
+         JOIN games g ON r.id_game = g.id_game
+         JOIN publisher ps ON ps.id_publisher = g.id_publisher
+         JOIN games_supports_platform gsp ON g.id_game = gsp.id_game
+         JOIN platform p ON p.id_platform = gsp.id_platform;

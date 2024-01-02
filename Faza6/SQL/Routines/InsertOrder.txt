@@ -1,0 +1,37 @@
+create function insertorder(_status character varying, _order_date date, _total_amount numeric, _id_costumer integer, _id_payment integer, _game_ids integer[], _promotion_ids integer[]) returns integer
+    language plpgsql
+as
+$$
+    DECLARE
+        new_order_id integer;
+        game_id integer;
+        promotion_id integer;
+BEGIN
+    INSERT INTO orders(status, order_date, total_amount, id_costumer, id_payment)
+    VALUES (_status, _order_date, _total_amount, _id_costumer, _id_payment);
+
+    new_order_id :=lastval();
+
+    FOREACH game_id IN ARRAY _game_ids
+    LOOP
+        IF  EXISTS (SELECT 1 FROM games WHERE id_game = game_id) THEN
+            INSERT INTO orders_contains_games(id_order, id_game)
+            VALUES (new_order_id, game_id);
+        END IF;
+       
+    END LOOP;
+
+    FOREACH promotion_id IN ARRAY _promotion_ids
+    LOOP
+        IF  EXISTS (SELECT 1 FROM promotions WHERE id_promotion = promotion_id) THEN 
+            INSERT INTO orders_are_related_to_promotions(id_order, id_promotion)
+            VALUES (new_order_id, promotion_id);
+        
+        END IF;
+       
+    END LOOP;
+
+    RETURN new_order_id;
+END;
+
+$$;

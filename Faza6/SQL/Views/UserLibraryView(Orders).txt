@@ -1,0 +1,23 @@
+create view userlibraryview
+            (title, genre, price, developer, stock, release_date, discount_percentage, start_date, end_date, amount,
+             payment_method, date)
+as
+SELECT g.title,
+       g.genre,
+       g.price,
+       g.developer,
+       g.stock,
+       g.release_date,
+       p.discount_percentage,
+       p.start_date,
+       p.end_date,
+       pay.amount,
+       pay.payment_method,
+       pay.date
+FROM games g
+         JOIN orders_contains_games ocg ON g.id_game = ocg.id_game
+         JOIN orders o ON o.id_order = ocg.id_order
+         JOIN payment pay ON o.id_payment = pay.id_payment
+         JOIN costumer c ON o.id_costumer = c.id_costumer
+         JOIN orders_are_related_to_promotions orp ON o.id_order = orp.id_order
+         JOIN promotions p ON orp.id_promotion = p.id_promotion;
